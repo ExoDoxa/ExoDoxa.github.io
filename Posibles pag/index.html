@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papayeras en Bogotá</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(0,0,0,0.7);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo-grande {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    perspective: 1000px;
+    margin-left: 30px;
+    margin-right: 30px;
+    flex-shrink: 0;
+  }
+  .logo-grande img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.8s;
+    backface-visibility: hidden;
+    object-fit: cover;
+  }
+  .logo-grande img.back {
+    transform: rotateY(180deg);
+  }
+  .logo-grande:hover img.front {
+    transform: rotateY(180deg);
+  }
+  .logo-grande:hover img.back {
+    transform: rotateY(0deg);
+  }
+    .logo-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      perspective: 1000px;
+    }
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transition: transform 0.8s;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .logo-container img.back {
+      transform: rotateY(180deg);
+    }
+    .logo-container:hover img.front {
+      transform: rotateY(180deg);
+    }
+    .logo-container:hover img.back {
+      transform: rotateY(0deg);
+    }
+    @media (max-width: 768px) {
+    header {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding: 160px 20px 60px;
+    }
+    .header-texto {
+      max-width: 100%;
+      text-align: center;
+    }
+    .logo-grande {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 30px;
+    }
+  }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-right: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 5px 10px;
+    }
+    header {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 100vh;
+      background: url('assets/fondofiesta.png') center/cover no-repeat;
+      color: white;
+      padding: 80px 60px 60px;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, rgba(90, 218, 21, 0.85), rgba(231,76,60,0.85));
+      z-index: 1;
+    }
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+    .header-texto {
+      max-width: 50%;
+      text-align: right;
+    }
+    .logo-grande {
+      width: 320px;
+      height: 320px;
+      position: relative;
+      perspective: 1000px;
+    }
+    .logo-grande img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.8s;
+      backface-visibility: hidden;
+    }
+    .logo-grande img.back {
+      transform: rotateY(180deg);
+    }
+    .logo-grande:hover img.front {
+      transform: rotateY(180deg);
+    }
+    .logo-grande:hover img.back {
+      transform: rotateY(0deg);
+    }
+    header h1 {
+      font-size: 4.5em;
+      margin: 0.2em 0;
+    }
+    header p.subtitle {
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+    header p {
+      font-size: 1.4em;
+    }
+    .btn {
+      padding: 18px 35px;
+      background-color: #58d3b5;
+      border: none;
+      border-radius: 25px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+    section {
+      padding: 100px 40px;
+      text-align: center;
+    }
+    #servicios {
+      background-color: #000;
+      color: white;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .card {
+      background: #000;
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 300px;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    .card h3 {
+      color: #f39c12;
+    }
+    .precios {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      background: #f4f4f4;
+      padding: 40px 20px;
+    }
+    .precio-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 250px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    .precio-card h4 {
+      margin: 10px 0;
+      color: #e67e22;
+    }
+    .precio-card ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#top" class="logo-container">
+      <img src="assets/logo.png" class="front" alt="Logo Papayeras">
+      <img src="assets/foto2.png" class="back" alt="Foto animada">
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contáctenos</a>
+      <a href="#galeria">Galería</a>
+    </div>
+  </nav>
+
+  <header id="top">
+    <div class="logo-grande">
+      <img src="assets/logo.png" class="front" alt="Logo Papayeras Grande">
+      <img src="assets/foto3.png" class="back" alt="Foto animada grande">
+    </div>
+    <div class="header-texto animate__animated animate__fadeInLeft animate-delay-1">
+      <p class="subtitle">Organización musical Rafael Contreras Calín</p>
+      <h1 class="animate__animated animate__fadeIn animate-delay-2">Shows musicales en vivo para tus eventos más especiales</h1>
+      <p class="animate__animated animate__fadeInUp animate-delay-3">Papayeras, serenatas, eventos empresariales y familiares en Bogotá.</p>
+      <button class="btn animate__animated animate__zoomIn animate-delay-3">Cotiza ahora </button>
+    </div>
+  </header>
+
+  <section id="servicios">
+    <p class="subtitle">Quieres que tu evento se sienta, se viva y se recuerde</p>
+    <h2>🎶 Ofrecemos música en vivo personalizada para todo tipo de ocasión.</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="assets/cumpleanos.png" alt="Cumpleaños">
+        <h3>🎉 Sorpresas musicales, serenatas y shows con saxofón, clarinete o papayera.</h3>
+        <p>Celebra con un repertorio alegre y personalizado, ideal para adultos, niños o fiestas temáticas.</p>
+      </div>
+      <div class="card">
+        <img src="assets/bodas.png" alt="Bodas">
+        <h3>💍 Ceremonias, entradas nupciales, cócteles y recepciones.</h3>
+        <p>Desde música instrumental romántica hasta cumbia elegante.</p>
+      </div>
+      <div class="card">
+        <img src="assets/eventos.png" alt="Eventos">
+        <h3>🏢 Amenización profesional para ferias, lanzamientos y eventos institucionales.</h3>
+        <p>Música adaptable al tono de tu evento: alegre, elegante o tradicional.</p>
+      </div>
+      <div class="card">
+        <img src="assets/bienvenidas.png" alt="Bienvenidas">
+        <h3>🌄 Bienvenidas y despedidas con música significativa.</h3>
+        <p>Repertorios emotivos, folklóricos o modernos según el momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>5
+    <h2>Elige la mejor opción para ti</h2>
+    <div class="precios">
+      <div class="precio-card">
+        <h4>Combo 1<br><small>Desde $190.000</small></h4>
+        <ul>
+          <li>45 Minutos</li>
+          <li>3 Músicos</li>
+          <li>12 Antifaces</li>
+          <li>12 Corbatas</li>
+          <li>1 Lanza confeti</li>
+          <li>Canción de ñapa</li>
+        </ul>
+      </div>
+      <div class="precio-card">
+        <h4>Combo 2<br><small>Desde $260.000</small></h4>
+        <ul>
+          <li>45 Minutos</li>
+          <li>4 Músicos</li>
+          <li>12 Corbatas</li>
+          <li>12 Antifaces</li>
+          <li>1 Lanza confeti</li>
+          <li>12 Pitos</li>
+        </ul>
+      </div>
+      <div class="precio-card">
+        <h4>Combo 3<br><small>Desde $300.000</small></h4>
+        <ul>
+          <li>60 Minutos</li>
+          <li>4 Músicos</li>
+          <li>12 Antifaces</li>
+          <li>12 Corbatas</li>
+          <li>12 sombreros</li>
+          <li>12 Collares</li>
+          <li>12 Pitos</li>
+          <li>1 lanza confeti</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p>Escríbenos a <strong>info@papayerasbogota.com</strong> o vía WhatsApp al <strong>+57 300 000 0000</strong></p>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <p>(Aquí podrías insertar una galería de fotos con lightbox o un grid de imágenes próximamente)</p>
+  </section>
+</body>
+</html>

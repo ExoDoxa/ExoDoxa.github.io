@@ -331,18 +331,6 @@ header
   transition: all .3s;
 }
 
-.cta-text {
-  font-size: 1.25rem; /* un poco más grande que el normal */
-  font-weight: 500;   /* opcional, un poco más grueso */
-}
-
-@media (min-width: 992px) {
-  .cta-text {
-    font-size: 1.5rem; /* más grande en pantallas grandes */
-  }
-}
-
-
 .header-area .main-nav .nav li:last-child a:hover {
   color: #fff;
 }
@@ -745,6 +733,7 @@ header
 banner
 --------------------------------------------- 
 /* Banner */
+/* Banner */
 .swiper-container {
   height: calc(100vh - 0px);
   margin: 0px;
@@ -812,9 +801,6 @@ banner
   opacity: 1;
 }
 
-
-
-
 .slide-inner .header-text {
   position: absolute;
   width: 50%;
@@ -844,7 +830,6 @@ banner
   color: #fff;
   margin-right: 60px;
   margin-bottom: 50px;
-  font-size: 1.5rem; 
 }
 
 .slide-inner .header-text h2 em {
@@ -940,57 +925,15 @@ banner
   0%,100%{ filter: drop-shadow(0 6px 18px rgba(0,0,0,.35)); }
   50%    { filter: drop-shadow(0 8px 28px rgba(0,0,0,.45)) drop-shadow(0 0 18px rgba(232,210,160,.35)); }
 }
-/* Asegura anclaje correcto para hijos absolutos (logo) */
-.swiper-slide{
-  position: relative;
-  overflow: hidden; /* lo que ya tenías */
-}
 
-/* ====== HERO MOBILE: logo centrado arriba (<= 768px) ====== */
 @media (max-width: 768px){
-
-  .swiper-container{ height: 100svh; }  /* mejor para móviles con barras */
-
-  .slide-inner{
-    padding: 0 !important;
-    align-items: stretch;
-    justify-content: stretch;
-  }
-
-  /* LOGO centrado arriba */
-  .swiper-slide .slide-logo{
-    position: absolute !important;
-    top: max(10px, env(safe-area-inset-top)) !important; /* notch safe */
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-
-    width: clamp(150px, 44vw, 220px) !important;
-    transform: translateX(-50%) !important;   /* anula translateY de desktop */
-    z-index: 3;
-    opacity: 1;
-    pointer-events: none; /* no tapa botones */
+  .slide-logo{
+    right:2.5vw;
+    top:43%;
+    width:min(200px, 42vw);
+    transform:translateY(-50%) scale(.95);
   }
 }
-
-/* Teléfonos muy pequeños */
-@media (max-width: 380px){
-  .swiper-slide .slide-logo{
-    top: max(8px, env(safe-area-inset-top)) !important;
-    width: clamp(130px, 48vw, 190px) !important;
-  }
-
-  /* si el texto se te sube mucho, lo bajas un poco */
-  .slide-inner .header-text{
-    bottom: 8vh !important;
-    width: 92% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-  }
-}
-
-
 
 /*
 ---------------------------------------------
@@ -1212,82 +1155,6 @@ generos
 }
 .btn-whatsapp:hover{ background:#1ebe5d; color:#fff; }
 .nav-tabs .nav-link{ font-weight:600; }
-
-
-/* Galería en grid responsiva con miniaturas */
-.gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* más columnas automáticamente */
-  gap: 12px;
-}
-
-/* Cada item será una “tarjeta” 4:3 */
-.gallery-grid .gallery-item{
-  position: relative;
-  display: block;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #000;
-  aspect-ratio: 5 / 4;          /* <-- miniatura */
-}
-
-/* La imagen llena la tarjeta */
-.gallery-grid .gallery-item img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* cambia a contain si prefieres bloques completos pero gran */
-  transition: transform .25s ease, opacity .25s ease;
-}
-.gallery-grid .gallery-item:hover img{
-  transform: scale(1.03);
-  opacity: .92;
-}
-.gallery-grid img {
-  width: 100%;
-  height: 200px; /* altura fija para uniformidad */
-  object-fit: contain; /* cambia a cover si prefieres recortar */
-  border-radius: 8px;
-  background-color: #f5f5f5; /* fondo para las que no llenan el espacio */
-}
-
-.gallery-item{
-  position:relative;
-  display:block;
-  border-radius:14px;
-  overflow:hidden;
-  background:#111;
-  aspect-ratio:16/9;              /* Todas iguales */
-  box-shadow:0 8px 18px rgba(0,0,0,.06);
-}
-
-.gallery-item .thumb{
-  width:100%; height:100%;
-  object-fit:cover;                /* Recorte bonito */
-  display:block;
-}
-
-/* Badge de play para imágenes (YouTube) */
-.play-badge{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  color:#fff; pointer-events:none;
-  background:linear-gradient(transparent, rgba(0,0,0,.25));
-}
-.play-badge i{
-  font-size:28px;
-  width:52px; height:52px; border-radius:999px;
-  background:rgba(0,0,0,.55);
-  display:flex; align-items:center; justify-content:center;
-}
-
-/* Variantes aún más pequeñas, por si quieres afinar por modal */
-.gallery-grid.gallery-compact { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-.gallery-grid.gallery-mini    { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-
-/* En móviles mantenemos miniaturas pero cómodas */
-@media (max-width: 576px){
-  .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
-}
 
 /*
 ---------------------------------------------
@@ -1631,172 +1498,117 @@ page heading
 }
 
 
-/* =========================================
-   Contacto / Cotiza
-   ========================================= */
-:root{
-  --vino:#ab0303;
-  --azul:#038aef;
-  --dorado:#e8d2a0;
-  --bg-soft:#f4e7cf;
-  --text:#1f2430;
-}
 
-/* Sección */
-.contact-cta{
+/* 
+---------------------------------------------
+about us page
+--------------------------------------------- 
+*/
+/* Sección general */
+.pricing {
+  background: linear-gradient(135deg, #fdf9f3, #e8d2a0);
   padding: 80px 0;
-  background: linear-gradient(180deg, #f6ead6 0%, #ead7b8 100%);
-  color: var(--text);
 }
-.contact-cta .section-header h2{
-  font-weight: 800;
-  margin-bottom: .25rem;
+
+.section-header h2 {
+  font-weight: 700;
+  color: #ab0303;
 }
-.contact-cta .section-header h2 span{
-  color: var(--vino);
-}
-.contact-cta .section-header p{
-  max-width: 760px;
+
+.section-header p {
+  color: #444;
+  font-size: 18px;
+  max-width: 700px;
   margin: 0 auto;
-  opacity:.85;
 }
 
-/* Tarjetas base */
-.cta-card, .social-card{
+/* Tarjetas */
+.pricing-card {
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-  padding: 22px 22px 24px;
-  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
 }
 
-/* Encabezados con mejor contraste */
-.cta-card__head, .social-card__head{
-  color:#fff;
-  border-radius: 14px;
-  padding: 16px 18px;
-  margin-bottom: 16px;
-}
-.cta-card__head h3, .social-card__head h4{
-  margin:0;
-  font-weight: 800;
-  letter-spacing: .2px;
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  border-color: #038aef;
 }
 
-/* Verde para WhatsApp */
-.head--wa{
-  background: linear-gradient(90deg, #25D366, #128C7E);
+/* Botón de WhatsApp oculto por defecto */
+.whatsapp-btn {
+  display: none;
+  background: #25d366;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 15px auto 10px;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
-/* Azul para redes (combina con tu paleta) */
-.head--social{
-  background: linear-gradient(90deg, #038aef, #0b61d1);
+.whatsapp-btn:hover {
+  background: #1ebe5d;
 }
 
-/* Lista con checks */
-.cta-list{
+/* Tarjeta seleccionada */
+.pricing-card.selected {
+  border: 3px solid #ab0303;
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.pricing-card.selected .whatsapp-btn {
+  display: inline-block;
+}
+
+
+/* Encabezado de cada tarjeta */
+.pricing-header {
+  background: #ab0303;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.pricing-header h4 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.pricing-header .price {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #e8d2a0;
+}
+
+/* Lista de características */
+.pricing-features {
   list-style: none;
-  padding: 0; margin: 18px 0 20px;
-}
-.cta-list li{
-  display: flex; align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.cta-list i{ color: var(--azul); }
-
-/* Botón WhatsApp */
-.btn-wa{
-  display:inline-flex; align-items:center; gap:10px;
-  background:#25D366; color:#fff; border:0;
-  padding: 12px 18px; border-radius: 12px;
-  font-weight:700; text-decoration:none;
-  box-shadow: 0 8px 18px rgba(37,211,102,.25);
-  transition: transform .15s ease, filter .15s ease;
-}
-.btn-wa:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+  padding: 20px;
+  margin: 0;
+  text-align: center;
 }
 
-/* Botón outline (enviar formulario) */
-.btn-outline{
-  display:inline-flex; align-items:center; gap:10px;
-  border:2px solid var(--azul); color:var(--azul);
-  padding: 10px 16px; border-radius: 12px;
-  font-weight:700; text-decoration:none;
-  transition: background .15s ease, color .15s ease;
-}
-.btn-outline:hover{ background:var(--azul); color:#fff; }
-
-/* Formulario */
-.contact-form .form-label { font-weight: 600; }
-.contact-form .form-control{
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,.12);
-  padding: 10px 14px;
-}
-.contact-form .form-control:focus{
-  border-color: var(--azul);
-  box-shadow: 0 0 0 0.15rem rgba(3,138,239,.25);
+.pricing-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 15px;
 }
 
-/* Chips rápidos */
-.quick-chips span{ font-weight:600; margin-right:10px; }
-.chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-.chip{
-  text-decoration:none; font-weight:600;
-  padding:8px 12px; border-radius:999px;
-  background:#f2f6ff; color:#173d73; border:1px solid rgba(0,0,0,.06);
-}
-.chip:hover{ background:#e9f2ff; }
-
-/* Líneas de contacto */
-.contact-lines{
-  display:flex; gap:18px; flex-wrap:wrap;
-  opacity:.9;
-}
-.contact-lines i{ color: var(--vino); margin-right:8px; }
-
-/* Redes */
-.social-grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:10px;
-}
-.social-item{
-  display:flex; align-items:center; gap:12px;
-  padding:12px 14px; border-radius:12px;
-  text-decoration:none; color:var(--text);
-  background:#fff; border:1px solid rgba(0,0,0,.06);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.social-item i{ font-size:20px; width:24px; text-align:center; }
-.social-item:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0,0,0,.08);
-}
-.social-item .fa-instagram{ color:#e1306c; }
-.social-item .fa-tiktok{ color:#111; }
-.social-item .fa-facebook{ color:#1877F2; }
-.social-item .fa-youtube{ color:#FF0000; }
-
-.social-card .note{
-  background: #fff7e2;
-  border:1px dashed var(--dorado);
-  color:#7a5a1a;
-  padding:10px 12px; border-radius:10px;
+.pricing-features li:last-child {
+  border-bottom: none;
 }
 
-/* Responsive */
-@media (min-width: 576px){
-  .social-grid{ grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 992px){
-  .social-grid{ grid-template-columns: 1fr; }
-}
 
-/*
+/* 
 ---------------------------------------------
 services page
 --------------------------------------------- 
@@ -1963,23 +1775,6 @@ section.service-details ul.nacc li.active {
   z-index: 2;
   opacity: 1;
   transform: translateX(0px);
-}
-
-
-.sobre-mi-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  /* Desvanecido de derecha a izquierda */
-  mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
-}
-
-@media (max-width: 768px) {
-  .sobre-mi-img {
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
 }
 
 
@@ -2244,8 +2039,4 @@ body {
     padding: 50px;
   }
   
-
-  
 }
-
-
